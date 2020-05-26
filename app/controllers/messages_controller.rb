@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
             serialized_msg = ActiveModelSerializers::Adapter::Json.new(
                 MessageSerializer.new(message)
               ).serializable_hash
-              MessageChannel.broadcast_to conversation, serialized_msg head :ok
+              MessageChannel.broadcast_to conversation, serialized_msg
+            head :ok
         end
     end
 

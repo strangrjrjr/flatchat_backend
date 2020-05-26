@@ -9,7 +9,8 @@ class ConversationsController < ApplicationController
         conversation = Conversation.new(conversation_params)
         if conversation.save
             serialized_convo = ActiveModelSerializers::Adapter::Json.new(ConversationSerializer.new(conversation)).serializable_hash
-            ActionCable.server.broadcast 'conversations_channel', serialized_convo head :ok
+            ActionCable.server.broadcast 'conversations_channel', serialized_convo
+            head :ok
         end
     end
 
