@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :user_conversations
   resources :messages
-  resources :users
+  resources :users, only: [:create]
+  post '/login', to: 'auth#create'
+  get '/home', to: 'conversations#index'
   resources :conversations
   mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
