@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     before_action :authorized
 
     def encode_token(payload)
-        JWT.encode(payload, 'WKzDujU48MGn79lsC4zH37hGqyIZhykL+LZWzhBjAxL3/n+sJ8K0mQfEd/5OT0h5BxrzvkYljtxuqdhT/9nckS4NfTbKsseDW95ITpkcikxp1wRnIryGocGBjBNM3XRSAGBXW/P3YqHSSe8oZQgw/YjSU7WlH1dL8JnicjA0p9/eUkcYpcXGAmHmiydXoCDxUL+Pp1vDzb2GQ2jbTDNhUCXplfJlsSeqLCql42D6q2XwQ/rx8le0BgO1hsTwI1Jqx44t++VtCK/UlHMbwHKXguLoOxidxqp96mpmUAl1YizEqVLoQn1IUlfZmMTyY24jzjN3Jrl9S8N4fVlCtcrYOLrhTJKPnsbr+SoktmFCjjsR6v04vYM1JKialZJVWyzZeG+9yDACfsQTyxSU49pTaLOiDAd4eWyFY66k--Ne/RHslPALS3a7x5--WNmVvsjenVYOc7a9/qYBlA==')
+        JWT.encode(payload, 'secret')
     end
 
     def auth_header
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
                 token = auth_header.split(' ')[1]
                 # headers: { 'Authorization': 'Bearer <token>' }
                 begin
-                    JWT.decode(token, 'WKzDujU48MGn79lsC4zH37hGqyIZhykL+LZWzhBjAxL3/n+sJ8K0mQfEd/5OT0h5BxrzvkYljtxuqdhT/9nckS4NfTbKsseDW95ITpkcikxp1wRnIryGocGBjBNM3XRSAGBXW/P3YqHSSe8oZQgw/YjSU7WlH1dL8JnicjA0p9/eUkcYpcXGAmHmiydXoCDxUL+Pp1vDzb2GQ2jbTDNhUCXplfJlsSeqLCql42D6q2XwQ/rx8le0BgO1hsTwI1Jqx44t++VtCK/UlHMbwHKXguLoOxidxqp96mpmUAl1YizEqVLoQn1IUlfZmMTyY24jzjN3Jrl9S8N4fVlCtcrYOLrhTJKPnsbr+SoktmFCjjsR6v04vYM1JKialZJVWyzZeG+9yDACfsQTyxSU49pTaLOiDAd4eWyFY66k--Ne/RHslPALS3a7x5--WNmVvsjenVYOc7a9/qYBlA==', true, algorithm: 'HS256')
+                    JWT.decode(token, 'secret', true, algorithm: 'HS256')
                     # JWT.decode => [{ "beef"=>"steak" }, { "alg"=>"HS256" }]
                 rescue JWT::DecodeError
                     nil

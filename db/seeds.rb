@@ -11,9 +11,9 @@ Message.destroy_all
 User.destroy_all
 Conversation.destroy_all
 
-User.create(username: "Roger", password_digest: "passw0rd", first_name: "Roger", last_name: "Robertson")
-User.create(username: "Jazz", password_digest: "passw0rd", first_name: "Jazz", last_name: "Bozzner")
-User.create(username: "John", password_digest: "passw0rd", first_name: "John", last_name: "Souza")
+User.create(username: "Roger", password: "passw0rd", first_name: "Roger", last_name: "Robertson")
+User.create(username: "Jazz", password: "passw0rd", first_name: "Jazz", last_name: "Bozzner")
+User.create(username: "John", password: "passw0rd", first_name: "John", last_name: "Souza")
 
 puts "Users Seeded"
 
