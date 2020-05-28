@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-        byebug
         if @user.valid?
             # serialized_user = ActiveModelSerializers::Adapter::Json.new(UserSerializer.new(user)).serializable_hash
             # ActionCable.server.broadcast 'users_channel', serialized_user
