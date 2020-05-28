@@ -13,6 +13,10 @@ class AuthController < ApplicationController
         render json: { message: 'Invalid username or password' }, status: :unauthorized
       end
     end
+
+    def show
+      render json: {message: "Authorized"}
+    end
    
     private
    
