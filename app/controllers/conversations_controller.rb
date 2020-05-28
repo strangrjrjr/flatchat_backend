@@ -5,6 +5,7 @@ class ConversationsController < ApplicationController
 
     def index
         conversations = Conversation.all
+        conversations = conversations.select{|conversation| conversation.users.map{|user| user.id}.include?(current_user.id)}
         render json: conversations
     end
 
