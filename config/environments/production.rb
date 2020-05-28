@@ -82,6 +82,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
+  config.web_socket_server_url = 'ws://flatchat-demo.herokuapp.com/cable'
+
+  config.action_cable.allowed_request_origins = ['https://flatchat-demo.herokuapp.com', 'http://flatchat-demo.herokuapp.com']
+
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write

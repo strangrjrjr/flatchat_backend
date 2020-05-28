@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: flatchat_api_production
+  url: redis://redistogo:d79541ac2063d2df3d46087e65d0e3a5@pike.redistogo.com:11010/
+  
