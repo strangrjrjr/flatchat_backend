@@ -83,7 +83,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  config.web_socket_server_url = 'ws://flatchat-demo.herokuapp.com/cable'
+  config.web_socket_server_url = 'wss://flatchat-demo.herokuapp.com/cable'
 
   config.action_cable.allowed_request_origins = ['https://flatchat-demo.herokuapp.com', 'http://flatchat-demo.herokuapp.com']
 
