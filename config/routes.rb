@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :user_conversations
   resources :messages
   resources :users, only: [:create]
+  post '/signup', to: 'users#create'
   post '/login', to: 'auth#create'
   get '/home', to: 'conversations#index'
   get '/current_user', to: 'auth#show'

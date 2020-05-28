@@ -5,6 +5,7 @@ class ConversationsController < ApplicationController
 
     def index
         conversations = Conversation.all
+        conversations = conversations.select{|conversation| conversation.users.map{|user| user.id}.include?(current_user.id)}
         sorted_convos = conversations.each {|convo| convo.messages.sort_by {|msg| msg.id}}
         render json: sorted_convos
     end
