@@ -5,12 +5,14 @@ class ConversationsController < ApplicationController
 
     def index
         conversations = Conversation.all
-        render json: conversations
+        sorted_convos = conversations.each {|convo| convo.messages.sort_by {|msg| msg.id}}
+        render json: sorted_convos
     end
 
     def create
         conversation = Conversation.new(conversation_params)
         if conversation.save
+            stripped = conversation.users {|user| user.id = nil}
             serialized_convo = ActiveModelSerializers::Adapter::Json.new(ConversationSerializer.new(conversation)).serializable_hash
             ActionCable.server.broadcast 'conversations_channel', serialized_convo
             head :ok
