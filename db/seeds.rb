@@ -17,28 +17,15 @@ User.create(username: "John", password: "passw0rd", first_name: "John", last_nam
 
 puts "Users Seeded"
 
-Conversation.create(title: "Three person conversation", description: "We're all here!")
-Conversation.create(title: "Two person conversation", description: "Just the two of us")
+Conversation.create(title: "self.isolate", description: "Just the coolest mod")
 
 puts "Conversations Seeded"
 
 UserConversation.create(user_id: User.first.id, conversation_id: Conversation.first.id)
 UserConversation.create(user_id: User.second.id, conversation_id: Conversation.first.id)
-UserConversation.create(user_id: User.first.id, conversation_id: Conversation.second.id)
-UserConversation.create(user_id: User.second.id, conversation_id: Conversation.second.id)
-UserConversation.create(user_id: User.third.id, conversation_id: Conversation.second.id)
+UserConversation.create(user_id: User.third.id, conversation_id: Conversation.first.id)
+
 
 puts "UserConversations Seeded"
-
-Message.create(user_id: User.first.id, conversation_id: Conversation.first.id, text: "Hey")
-Message.create(user_id: User.first.id, conversation_id: Conversation.first.id, text: "Hey again")
-Message.create(user_id: User.second.id, conversation_id: Conversation.first.id, text: "Hey")
-Message.create(user_id: User.third.id, conversation_id: Conversation.first.id, text: "Hey")
-Message.create(user_id: User.first.id, conversation_id: Conversation.second.id, text: "Hey")
-Message.create(user_id: User.first.id, conversation_id: Conversation.second.id, text: "Hey again")
-Message.create(user_id: User.second.id, conversation_id: Conversation.second.id, text: "Hey")
-Message.create(user_id: User.second.id, conversation_id: Conversation.second.id, text: "Hey again again")
-
-puts "Messages Seeded"
 
 puts "Seeding completed"
