@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
+    skip_before_action :authorized, only: [:create]
+    before_action :logged_in?
 
     def create ## need to validate in this create message that a user has access to that specific conversatio
         conversation = Conversation.find(message_params[:conversation_id])
-        message = Message.new(message_params)
+        message = Message.new(user_id: current_user.id, conversation_id: conversation.id, text: params[:message][:text])
         if message.save
             serialized_msg = ActiveModelSerializers::Adapter::Json.new(
                 MessageSerializer.new(message)
