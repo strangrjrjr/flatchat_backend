@@ -85,7 +85,7 @@ Rails.application.configure do
 
   config.web_socket_server_url = 'wss://flatchat-demo.herokuapp.com/cable'
 
-  config.action_cable.allowed_request_origins = ['https://flatchat-demo.herokuapp.com', 'http://flatchat-demo.herokuapp.com', 'https://ecstatic-swartz-aca3e4.netlify.app/']
+  config.action_cable.allowed_request_origins = ['https://ecstatic-swartz-aca3e4.netlify.app/', 'https://flatchat-demo.herokuapp.com', 'http://flatchat-demo.herokuapp.com', 'http://localhost:3000']
 
 
   # Inserts middleware to perform automatic connection switching.
